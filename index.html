@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+   <!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        <img src="./assets/logo.png" alt="Blogger Logo">
+        <span>Blogger</span> <!-- Optional: Add a name beside the logo -->
+    </div>
+    <div class="nav-links">
+        <a href="#">About Us</a>
+        <a href="#">Trending</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact Us</a>
+        <div class="dropdown">
+            <button class="dropbtn">Sign Up/Login ⌄</button>
+            <div class="dropdown-content">
+                <a href="#">Sign Up</a>
+                <a href="#">Login</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+       
+    </section>
+    <div class="blog-btn-container">
+        <button id="createBlogBtn" class="create-blog-btn">Create Your Blog</button>
+    </div>
+    
+
+        <!-- Section Divider -->
+<div class="section-divider"></div>
+
+
+
+<marquee behavior="scroll" direction="left" scrollamount="20" class="marquee">
+    <span>Create stunning, memorable blogs & share your story with the world!</span>
+</marquee>
+
+    <div class="blog-section">
+        <img src="./assets/leftImg2.webp" alt="Create Blogs and Memories">
+        <div class="blog-content text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white">Create Your Own Blog</h2>
+            <div class="blog-btn-container">
+            <button id="createBlogBtn" class="create-blog-btn">Start Writing</button>
+        </div>
+        </div>
+        
+        
+    </div>
+
+    <!-- Section Divider -->
+<div class="section-divider"></div>
+    
+    <!-- Section Heading -->
+<div class="blog-preview-section">
+    <h2>Have a Look at These Amazing Blog Posts</h2>
+</div>
+
+<!-- Blog Grid Section -->
+<div class="blog-grid">
+    <div class="blog-card">
+        <img src="./assets/blog1.jpg" alt="Blog Post 1">
+        <h3>Exploring the Beauty of Nature</h3>
+    </div>
+    <div class="blog-card">
+        <img src="./assets/blog2.png" alt="Blog Post 2">
+        <h3>Tips to Improve Your Writing Skills</h3>
+    </div>
+</div>
+
+
+    <!-- Blog Functionality (Initially Hidden) -->
+    <div class="container" id="blogContainer" style="display: none;">
+        <h1>Welcome to Blogger</h1>
+
+        <!-- Authors Section -->
+        <h2>Authors</h2>
+        <div id="authors"></div>
+        <div class="input-group">
+            <input type="text" id="authorName" placeholder="Author Name">
+            <button onclick="addAuthor()">Add Author</button>
+        </div>
+
+        <!-- Blog Posts Section -->
+        <h2>Blog Posts</h2>
+        <div id="posts"></div>
+        <div class="input-group">
+            <input type="text" id="postTitle" placeholder="Post Title">
+            <input type="text" id="postContent" placeholder="Post Content">
+            <select id="postAuthor"></select>
+            <button onclick="addPost()">Add Post</button>
+        </div>
+
+        <!-- Search Section -->
+        <h2>Search Blog Posts by Author</h2>
+        <div class="input-group">
+            <input type="text" id="searchAuthor" placeholder="Enter Author Name">
+            <button onclick="searchPostsByAuthor()">Search</button>
+        </div>
+        <div id="searchResults"></div>
+    </div>
+
+    <br>
+    <div class="section-divider"></div>
+
+    <!-- Footer -->
+
+    <footer class="bg-[#1a1a1a] text-gray-400 py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+                <!-- Help Section -->
+                <div>
+                    <h3 class="text-white font-semibold mb-3">Help</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Help Centre</a></li>
+                        <li><a href="#" class="hover:text-white">Help Forum</a></li>
+                        <li><a href="#" class="hover:text-white">Video Tutorials</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Community Section -->
+                <div>
+                    <h3 class="text-white font-semibold mb-3">Community</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Blogger Buzz</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Developers Section -->
+                <div>
+                    <h3 class="text-white font-semibold mb-3">Developers</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Blogger API</a></li>
+                        <li><a href="#" class="hover:text-white">Developer Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Divider Line -->
+            <div class="border-t border-gray-700 my-6"></div>
+    
+            <!-- Bottom Section -->
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm">
+                <div class="flex space-x-4 mb-4 md:mb-0">
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white">Privacy</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white">Content Policy</a>
+                </div>
+    
+                <!-- Language Selector -->
+                <div>
+                    <select class="bg-gray-800 text-gray-400 px-3 py-1 rounded border border-gray-700">
+                        <option>English (United Kingdom)</option>
+                        <option>English (United States)</option>
+                        <option>Hindi</option>
+                        <option>French</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
