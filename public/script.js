@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000';
+const API_BASE = 'https://blogpage-3sny.onrender.com';
 const authorId = document.getElementById('postAuthor').value;
 
 
