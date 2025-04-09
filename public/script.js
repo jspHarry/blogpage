@@ -55,14 +55,32 @@ async function fetchPosts() {
 }
 
 async function addAuthor() {
-    const name = document.getElementById('authorName').value;
+    const name = document.getElementById('authorName').value.trim();
+    if (!name) {
+        alert("Author name cannot be empty.");
+        return;
+    }
+
+    // Fetch all authors and check for duplicates
+    const authors = await fetch(`${API_BASE}/authors`).then(res => res.json());
+    const nameExists = authors.some(author => author.name.toLowerCase() === name.toLowerCase());
+
+    if (nameExists) {
+        alert("Author with this name already exists.");
+        return;
+    }
+
+    // If name is unique, proceed to add
     await fetch(`${API_BASE}/authors`, {
         method: 'POST',
         body: JSON.stringify({ name }),
         headers: { 'Content-Type': 'application/json' }
     });
+
+    document.getElementById('authorName').value = ''; // Clear input
     fetchAuthors();
 }
+
 
 async function addPost() {
     const title = document.getElementById('postTitle').value;
